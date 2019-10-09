@@ -79,9 +79,9 @@ public class Controller extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
-        if (session.equals(null)) response.sendRedirect("index.html");
+        if (session == null) response.sendRedirect("index.html");
         Integer sPageNum = (Integer)session.getAttribute("pageNum");
-        if (sPageNum.equals(null)) response.sendRedirect("index.html");
+        if (sPageNum == null) response.sendRedirect("index.html");
         int rPageNum = Integer.parseInt(request.getParameter("pageNum"));
         if (rPageNum != sPageNum.intValue()) response.sendRedirect("index.html");
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/PageHandler" + rPageNum);
