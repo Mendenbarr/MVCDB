@@ -19,8 +19,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author 01048750
  */
-@WebServlet(name = "PageHandler1", urlPatterns = {"/PageHandler1"})
-public class PageHandler1 extends HttpServlet {
+@WebServlet(name = "PageHandler2", urlPatterns = {"/PageHandler2"})
+public class PageHandler2 extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -78,7 +78,7 @@ public class PageHandler1 extends HttpServlet {
         HttpSession session = request.getSession(false);
         if (session == null) response.sendRedirect("index.html");
         int sPageNum = (Integer)session.getAttribute("pageNum");
-        if(sPageNum != 1) response.sendRedirect("index.html");
+        if(sPageNum != 2) response.sendRedirect("index.html");
         //Process the page - check that all fields are full.
         int validFieldNames = 0;
         int numFields = 0;
@@ -90,11 +90,9 @@ public class PageHandler1 extends HttpServlet {
             numFields++;
         }
         if (validFieldNames == numFields){
-            sPageNum++;
-            session.setAttribute("pageNum", sPageNum);
-            response.sendRedirect("pageNum2.html");
+            response.sendRedirect("http://jxed.bright-moments.com");
         }
-        else response.sendRedirect("pageNum1.html");
+        else response.sendRedirect("pageNum2.html");
 //        processRequest(request, response);
     }
 
